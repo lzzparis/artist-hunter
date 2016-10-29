@@ -1,6 +1,6 @@
 # Spotify Jukebox
 
-A Thinkful React/Redux capstone project.
+A Thinkful React/Redux capstone project by Lizzie Paris
 
 ## User stories
 * As a user, I can search for songs by artist or title.
