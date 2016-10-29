@@ -1,7 +1,7 @@
 {
-  "name": "thinkful-react-starter",
-  "version": "0.0.1",
-  "description": "A React template",
+  "name": "spotify-jukebox",
+  "version": "1.0.0",
+  "description": "Interactive Spotify queue builder",
   "main": "js/index.js",
   "scripts": {
     "start": "http-server build",
