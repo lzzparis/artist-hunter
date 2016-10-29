@@ -1,5 +1,5 @@
 {
-  "name": "spotify-jukebox",
+  "name": "artist-hunter",
   "version": "1.0.0",
   "description": "Interactive Spotify queue builder",
   "main": "js/index.js",
