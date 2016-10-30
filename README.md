@@ -3,8 +3,10 @@
 A Thinkful React/Redux capstone project by Lizzie Paris
 
 ## User stories
-* As a user, I can search for an artist using the TasteKid API
+* As a user, I can search for an artist using the Spotify API
 * As a user, I can review the results and listen to song snippets using the Spotify Play button
+
+If time permits:
 * As a user, I can log into my Spotify account.
 * As a user, I can follow a recommended artist
 

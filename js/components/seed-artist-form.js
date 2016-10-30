@@ -1,6 +1,6 @@
 var React = require("react");
 
-var TasteKidForm = React.createClass({
+var SeedArtistForm = React.createClass({
   formSubmit: function(event){
     event.preventDefault();
     console.log(this.refs.textIn.value);
@@ -18,4 +18,4 @@ var TasteKidForm = React.createClass({
   }
 });
 
-module.exports = TasteKidForm;
+module.exports = SeedArtistForm;
