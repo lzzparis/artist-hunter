@@ -1,9 +1,14 @@
 var React = require("react");
+var connect = require("react-redux").connect;
+
+var actions = require("../actions/actions");
 
 var SeedArtistForm = React.createClass({
   formSubmit: function(event){
     event.preventDefault();
-    console.log(this.refs.textIn.value);
+    var artistName = this.refs.textIn.value;
+    console.log(artistName);
+    this.props.dispatch(actions.fetchArtistId(artistName));
   },
   render: function(){
     return(
@@ -18,4 +23,7 @@ var SeedArtistForm = React.createClass({
   }
 });
 
-module.exports = SeedArtistForm;
+var SeedArtistFormContainer = connect()(SeedArtistForm);
+
+
+module.exports = SeedArtistFormContainer;
