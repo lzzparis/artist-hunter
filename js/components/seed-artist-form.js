@@ -18,12 +18,20 @@ var SeedArtistForm = React.createClass({
           <input type="text" ref="textIn" />
           <input type="submit" onClick={this.formSubmit} />
         </form>
+        <p className={this.props.topResultClass}>Top result: {this.props.seedArtistName}</p>
       </div>
     );
   }
 });
 
-var SeedArtistFormContainer = connect()(SeedArtistForm);
+var mapStateToProps = function(state, props){
+  return{
+    topResultClass: state.topResultClass,
+    seedArtistName: state.seedArtistName
+  }
+}
+
+var SeedArtistFormContainer = connect(mapStateToProps)(SeedArtistForm);
 
 
 module.exports = SeedArtistFormContainer;

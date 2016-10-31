@@ -40,7 +40,10 @@ var fetchArtistId = function(artistName){
     })
     //handle success
     .then(function(data){
-      console.log(data.artists.items[0].name);
+      console.log(data);
+      var topArtistName = data.artists.items[0].name;
+      var topArtistId = data.artists.items[0].id;
+      return dispatch(fetchArtistIdSuccess(topArtistName, topArtistId));
     })
     //handle error
     .catch(function(error){
