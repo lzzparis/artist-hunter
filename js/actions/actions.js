@@ -73,11 +73,6 @@ var fetchRecommendationsError = function(artist, recommendations){
   };
 }
 
-var Artist = function(artistInput){
-  this.name = artistInput.name;
-  this.id = artistInput.id;
-  this.images = artistInput.images;
-}
 
 var fetchRecommendations = function(quantity, artistId){
   return function(dispatch){
@@ -97,13 +92,8 @@ var fetchRecommendations = function(quantity, artistId){
     })
     //handle success
     .then(function(data){
-      var recommendations = []
-      for(var i = 0 ; i < quantity; i++){
-        var rand = Math.floor(Math.random()*data.artists.length);
-        var relatedArtist = new Artist(data.artists[rand]);
-        recommendations.push(relatedArtist);
-      }
-      return dispatch(fetchRecommendationsSuccess(recommendations));
+      console.log(data);
+      return dispatch(fetchRecommendationsSuccess(data.artists));
     })
     .catch(function(error){
       console.error(error);
