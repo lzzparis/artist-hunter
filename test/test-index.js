@@ -3,18 +3,25 @@ var TestUtils = require("react-addons-test-utils");
 var should = require("chai").should();
 
 var App = require("../js/components/app");
+var SeedArtistFormContainer = require("../js/components/seed-artist-form");
 
 describe("App", function(){
-  it("Prints Hello world", function(){
+  it("Displays header and form", function(){
     var renderer = TestUtils.createRenderer();
     renderer.render(<App/>);
     var result = renderer.getRenderOutput();
 
-    console.log(result);
+    var header = result.props.children[0];
+    header.props.children.should.equal("Artist Hunter");
 
-    var paragraph = result.props.children;
-    paragraph.should.equal("Hello world!");
+    var form = result.props.children[1];
+    TestUtils.isElementOfType(form, "SeedArtistFormContainer");
 
   })
+
+});
+
+describe("Seed Artist Form", function(){
+  //it("Contains")
 
 });
