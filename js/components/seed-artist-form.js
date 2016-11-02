@@ -18,7 +18,9 @@ var SeedArtistForm = React.createClass({
           <input type="text" ref="textIn" />
           <input type="submit" onClick={this.formSubmit} />
         </form>
-        <p className={this.props.topResultClass}>Top result: {this.props.seedArtistName}</p>
+        <p className={this.props.topResultClass}>
+          Top result: {this.props.seedArtistName}
+        </p>
       </div>
     );
   }

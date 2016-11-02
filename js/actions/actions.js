@@ -22,11 +22,9 @@ var fetchArtistId = function(artistName){
   return function(dispatch){
     var encodedArtistName = artistName.split(" ").join("+");
     var url = "https://api.spotify.com/v1/search?q="+encodedArtistName+"&type=artist";
-    var params = {
-      // mode:"cors"
-    }
+
     //execute fetch
-    fetch(url, params)
+    fetch(url)
     //check status
     .then(function(response){
       if(response.status < 200 || response.status >= 300){
@@ -43,7 +41,12 @@ var fetchArtistId = function(artistName){
       console.log(data);
       var topArtistName = data.artists.items[0].name;
       var topArtistId = data.artists.items[0].id;
-      return dispatch(fetchArtistIdSuccess(topArtistName, topArtistId));
+      // return dispatch(fetchArtistIdSuccess(topArtistName, topArtistId));
+      dispatch(fetchArtistIdSuccess(topArtistName, topArtistId));
+      return topArtistId;
+    })
+    .then(function(topArtistId){
+      dispatch(fetchRecommendations(topArtistId));
     })
     //handle error
     .catch(function(error){
@@ -71,25 +74,28 @@ var fetchRecommendationsError = function(artist, recommendations){
   };
 }
 
-var fetchRecommendations = function(artist){
+var fetchRecommendations = function(artistId){
   return function(dispatch){
-  //   var url = "";
-  //   var params = {
-  //     q: artist,
-  //     type: "music",
-  //     limit:4,
-  //     k:
-  //   }
-  //   //execute fetch
-  //   fetch(url, params)
-  //   //check status
-  //   .then(function(){})
-  //   //parse data
-  //   .then(function(){})
-  //   //handle success
-  //   .then(function(){})
-  //   //handle error
-  //   .catch(function(){});
+    console.log(artistId);
+    var url = "https://api.spotify.com/v1/artists/"+artistId+"/related-artists"; 
+    fetch(url)
+    //check status
+    .then(function(response){
+      if(response.status < 200 || response.status >= 300){
+        throw error;
+      }
+      return response
+    })
+    //parse data
+    .then(function(response){
+      return response.json();
+    })
+    //handle success
+    .then(function(data){
+      console.log(data);
+
+    })
+    .catch(function(error){});
    }
 
 }
