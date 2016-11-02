@@ -46,7 +46,7 @@ var fetchArtistId = function(artistName){
       return topArtistId;
     })
     .then(function(topArtistId){
-      dispatch(fetchRecommendations(topArtistId));
+      return dispatch(fetchRecommendations(4, topArtistId));
     })
     //handle error
     .catch(function(error){
@@ -57,10 +57,9 @@ var fetchArtistId = function(artistName){
 
 
 var FETCH_RECOMMENDATIONS_SUCCESS = "FETCH_RECOMMENDATIONS_SUCCESS";
-var fetchRecommendationsSuccess = function(artist, recommendations){
+var fetchRecommendationsSuccess = function(recommendations){
   return{
     type: FETCH_RECOMMENDATIONS_SUCCESS,
-    artistId: artistId,
     recommendations: recommendations
   }
 }
@@ -74,7 +73,8 @@ var fetchRecommendationsError = function(artist, recommendations){
   };
 }
 
-var fetchRecommendations = function(artistId){
+
+var fetchRecommendations = function(quantity, artistId){
   return function(dispatch){
     console.log(artistId);
     var url = "https://api.spotify.com/v1/artists/"+artistId+"/related-artists"; 
@@ -84,7 +84,7 @@ var fetchRecommendations = function(artistId){
       if(response.status < 200 || response.status >= 300){
         throw error;
       }
-      return response
+      return response;
     })
     //parse data
     .then(function(response){
@@ -93,9 +93,11 @@ var fetchRecommendations = function(artistId){
     //handle success
     .then(function(data){
       console.log(data);
-
+      return dispatch(fetchRecommendationsSuccess(data.artists));
     })
-    .catch(function(error){});
+    .catch(function(error){
+      console.error(error);
+    });
    }
 
 }
