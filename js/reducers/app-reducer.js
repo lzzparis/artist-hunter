@@ -18,6 +18,10 @@ var appReducer = function(state, action){
                           {seedArtistId: action.artistId},
                           {topResultClass: "showTopResult"});
   }
+  else if(action.type === actions.FETCH_RECOMMENDATIONS_SUCCESS){
+    console.log(action.recommendations);
+    return Object.assign({}, state, {recommendations: action.recommendations});
+  }
   return state;
 }
 
