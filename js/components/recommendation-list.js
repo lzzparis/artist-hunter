@@ -9,7 +9,7 @@ var RecommendationList = React.createClass({
     var recommendations = this.props.recommendations;
     for(var i = 0; i < recommendations.length; i++){
       var relatedArtist = recommendations[i];
-      list.push(<Recommendation key={i} name={relatedArtist.name} image={relatedArtist.images[0].url} />);
+      list.push(<Recommendation key={i} recommendation={relatedArtist} />);
     };
     return(
       <ul className="recommendation-list">

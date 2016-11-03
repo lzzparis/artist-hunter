@@ -34,6 +34,9 @@ var appReducer = function(state, action){
     }
     return Object.assign({}, state, {recommendations: recommendationSubset});
   }
+  else if (action.type === actions.FETCH_TOP_SONGS_SUCCESS){
+    console.log(action);
+  }
   return state;
 }
 

@@ -99,8 +99,47 @@ var fetchRecommendations = function(quantity, artistId){
       console.error(error);
     });
    }
-
 }
+
+var SongList = function(artistId,songs){
+  this.artistId = artistId,
+  this.songs = songs
+};
+
+var FETCH_TOP_SONGS_SUCCESS = "FETCH_TOP_SONGS_SUCCESS";
+var fetchTopSongsSuccess = function(songs){
+  return {
+    type: FETCH_TOP_SONGS_SUCCESS,
+    songs: songs
+  };
+};
+
+var fetchTopSongs = function(artistId){
+  return function(dispatch){
+    var url = ""
+    fetch(url)
+    //check status
+    .then(function(response){
+      if(response.status < 200 || response.status >= 300){
+        throw error;
+      }
+      return response;
+    })
+    //parse data
+    .then(function(response){
+      return response.json();
+    })
+    //handle success
+    .then(function(data){
+      var songList = new SongList(artistId, data); 
+      return dispatch(fetchTopSongsSuccess(songList));
+    })
+    .catch(function(error){
+      console.error(error);
+    });
+  };
+};
+
 
 exports.FETCH_ARTIST_ID_SUCCESS = FETCH_ARTIST_ID_SUCCESS;
 exports.fetchArtistIdSuccess = fetchArtistIdSuccess;
