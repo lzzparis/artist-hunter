@@ -74,6 +74,13 @@ var fetchRecommendationsError = function(artist, recommendations){
 }
 
 
+var Artist = function(artistInput){
+  this.name = artistInput.name;
+  this.id = artistInput.id;
+  this.images = artistInput.images;
+}
+
+
 var fetchRecommendations = function(quantity, artistId){
   return function(dispatch){
     console.log(artistId);
@@ -92,8 +99,17 @@ var fetchRecommendations = function(quantity, artistId){
     })
     //handle success
     .then(function(data){
+      var recommendationSubset = []
+      for(var i = 0 ; i < 4; i++){
+        var rand = Math.floor(Math.random() * data.artists.length);
+        var relatedArtist = new Artist(data.artists[rand]);
+        recommendationSubset.push(relatedArtist);
+      }
+      dispatch(fetchRecommendationsSuccess(recommendationSubset));
+      return recommendationSubset;
+    })
+    .then(function(data){
       console.log(data);
-      return dispatch(fetchRecommendationsSuccess(data.artists));
     })
     .catch(function(error){
       console.error(error);
@@ -116,7 +132,7 @@ var fetchTopSongsSuccess = function(songs){
 
 var fetchTopSongs = function(artistId){
   return function(dispatch){
-    var url = ""
+    var url = "https://api.spotify.com/v1/artists/"+artistId+"/top-tracks"
     fetch(url)
     //check status
     .then(function(response){
