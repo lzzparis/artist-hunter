@@ -3,7 +3,7 @@ var ReactDOM = require("react-dom");
 var Provider = require("react-redux").Provider;
 
 var store = require("./store"); 
-var routes = require("./components/app");
+var routes = require("./components/routes");
 
 document.addEventListener("DOMContentLoaded", function(){
   ReactDOM.render(
