@@ -27,13 +27,5 @@ var SeedArtistForm = React.createClass({
   }
 });
 
-var mapStateToProps = function(state, props){
-  return{
-    topResultClass: state.topResultClass,
-  }
-}
 
-var SeedArtistFormContainer = connect(mapStateToProps)(SeedArtistForm);
-
-
-module.exports = SeedArtistFormContainer;
+module.exports = SeedArtistForm;

@@ -22,13 +22,4 @@ var RecommendationList = React.createClass({
   }
 });
 
-var mapStateToProps = function(state, props){
-  return {
-    seedArtistName: state.seedArtistName,
-    recommendations: state.recommendations
-  };
-};
-
-var RecommendationListContainer = connect(mapStateToProps)(RecommendationList);
-
-module.exports = RecommendationListContainer;
+module.exports = RecommendationList;
