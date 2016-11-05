@@ -2,6 +2,7 @@ var React = require("react");
 
 var Recommendation = function(props){
   var trackset = [];    
+  console.log(props.recommendation);
   for(var i = 0 ; i < props.recommendation.songList.tracks.length; i++){
     trackset.push(props.recommendation.songList.tracks[i].id);
   };
@@ -10,13 +11,11 @@ var Recommendation = function(props){
                     + commaTrackset;
   var imageUrl = props.recommendation.images[0].url;
 
-
-  
   return(
     <li className="recommendation">
       <h4>{props.recommendation.name}</h4>
       <img src={imageUrl} />
-      <iframe src={playlistUri} frameborder="0" allowtransparency="true"></iframe>
+      <iframe src={playlistUri} frameBorder="0" allowTransparency="true"></iframe>
     </li>
   );
 };

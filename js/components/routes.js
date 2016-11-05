@@ -8,10 +8,9 @@ var hashHistory = router.hashHistory;
 var IndexRoute = router.IndexRoute;
 var Link = router.Link;
 
-var SeedArtistFormContainer = require("./seed-artist-form");
-var RecommendationListContainer = require("./recommendation-list");
 
 var App = require("./app")
+var RecommendationListContainer = require("./recommendation-list-container");
 
 var routes = (
   <Router history={hashHistory}>

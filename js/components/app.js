@@ -8,8 +8,7 @@ var hashHistory = router.hashHistory;
 var IndexRoute = router.IndexRoute;
 var Link = router.Link;
 
-var SeedArtistFormContainer = require("./seed-artist-form");
-var RecommendationListContainer = require("./recommendation-list");
+var SeedArtistFormContainer = require("./seed-artist-form-container");
 
 var App = function(props){
   return (
