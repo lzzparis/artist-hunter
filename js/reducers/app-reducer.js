@@ -5,7 +5,6 @@ var actions = require("../actions/actions");
 var initialState = {
   seedArtistName: null,
   seedArtistId: null,
-  topResultClass: "hideTopResult",
   numRecommendations:4,
   recommendations: []
 };

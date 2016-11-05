@@ -12,15 +12,19 @@ var RecommendationList = React.createClass({
       list.push(<Recommendation key={i} recommendation={relatedArtist} />);
     };
     return(
-      <ul className="recommendation-list">
-        {list}
-      </ul>
+      <div>
+        <p>Top result: {this.props.seedArtistName}</p>
+        <ul className="recommendation-list">
+          {list}
+        </ul>
+      </div>
     );
   }
 });
 
 var mapStateToProps = function(state, props){
   return {
+    seedArtistName: state.seedArtistName,
     recommendations: state.recommendations
   };
 };
