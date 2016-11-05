@@ -16,9 +16,7 @@ var Recommendation = function(props){
     <li className="recommendation">
       <h4>{props.recommendation.name}</h4>
       <img src={imageUrl} />
-      <ul className="song-list">
-        {trackset}
-      </ul>
+      <iframe src={playlistUri} frameborder="0" allowtransparency="true"></iframe>
     </li>
   );
 };
