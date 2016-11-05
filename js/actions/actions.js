@@ -74,6 +74,14 @@ var fetchRecommendationsError = function(artist, recommendations){
 }
 
 
+var Artist = function(artistInput){
+  this.name = artistInput.name;
+  this.id = artistInput.id;
+  this.images = artistInput.images;
+  this.songList = [];
+}
+
+
 var fetchRecommendations = function(quantity, artistId){
   return function(dispatch){
     console.log(artistId);
@@ -92,15 +100,62 @@ var fetchRecommendations = function(quantity, artistId){
     })
     //handle success
     .then(function(data){
-      console.log(data);
-      return dispatch(fetchRecommendationsSuccess(data.artists));
+      var recommendationSubset = []
+      for(var i = 0 ; i < 4; i++){
+        var rand = Math.floor(Math.random() * data.artists.length);
+        var relatedArtist = new Artist(data.artists[rand]);
+        recommendationSubset.push(relatedArtist);
+      }
+      dispatch(fetchRecommendationsSuccess(recommendationSubset));
+      return recommendationSubset;
+    })
+    .then(function(recommendationSubset){
+      console.log(recommendationSubset);
+      for(var i = 0 ; i < recommendationSubset.length ; i++){
+        dispatch(fetchTopSongs(recommendationSubset[i]));
+      }
+      return;
     })
     .catch(function(error){
       console.error(error);
     });
    }
-
 }
+
+var FETCH_TOP_SONGS_SUCCESS = "FETCH_TOP_SONGS_SUCCESS";
+var fetchTopSongsSuccess = function(artist){
+  return {
+    type: FETCH_TOP_SONGS_SUCCESS,
+    recommendation: artist
+  };
+};
+
+var fetchTopSongs = function(artist){
+  return function(dispatch){
+    var url = "https://api.spotify.com/v1/artists/"+artist.id+"/top-tracks?country=US"
+    fetch(url)
+    //check status
+    .then(function(response){
+      if(response.status < 200 || response.status >= 300){
+        throw error;
+      }
+      return response;
+    })
+    //parse data
+    .then(function(response){
+      return response.json();
+    })
+    //handle success
+    .then(function(data){
+      artist.songList = data;
+      return dispatch(fetchTopSongsSuccess(artist));
+    })
+    .catch(function(error){
+      console.error(error);
+    });
+  };
+};
+
 
 exports.FETCH_ARTIST_ID_SUCCESS = FETCH_ARTIST_ID_SUCCESS;
 exports.fetchArtistIdSuccess = fetchArtistIdSuccess;
@@ -112,3 +167,7 @@ exports.FETCH_RECOMMENDATIONS_SUCCESS = FETCH_RECOMMENDATIONS_SUCCESS;
 exports.fetchRecommendationsSuccess = fetchRecommendationsSuccess;
 exports.FETCH_RECOMMENDATIONS_ERROR = FETCH_RECOMMENDATIONS_ERROR;
 exports.fetchRecommendationsError = fetchRecommendationsError;
+
+
+exports.FETCH_TOP_SONGS_SUCCESS = FETCH_TOP_SONGS_SUCCESS;
+exports.fetchTopSongsSuccess = fetchTopSongsSuccess;
