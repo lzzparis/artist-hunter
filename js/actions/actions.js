@@ -78,6 +78,7 @@ var Artist = function(artistInput){
   this.name = artistInput.name;
   this.id = artistInput.id;
   this.images = artistInput.images;
+  this.songList = [];
 }
 
 
@@ -108,8 +109,12 @@ var fetchRecommendations = function(quantity, artistId){
       dispatch(fetchRecommendationsSuccess(recommendationSubset));
       return recommendationSubset;
     })
-    .then(function(data){
-      console.log(data);
+    .then(function(recommendationSubset){
+      console.log(recommendationSubset);
+      for(var i = 0 ; i < recommendationSubset.length ; i++){
+        dispatch(fetchTopSongs(recommendationSubset[i]));
+      }
+      return;
     })
     .catch(function(error){
       console.error(error);
@@ -117,22 +122,17 @@ var fetchRecommendations = function(quantity, artistId){
    }
 }
 
-var SongList = function(artistId,songs){
-  this.artistId = artistId,
-  this.songs = songs
-};
-
 var FETCH_TOP_SONGS_SUCCESS = "FETCH_TOP_SONGS_SUCCESS";
-var fetchTopSongsSuccess = function(songs){
+var fetchTopSongsSuccess = function(artist){
   return {
     type: FETCH_TOP_SONGS_SUCCESS,
-    songs: songs
+    recommendation: artist
   };
 };
 
-var fetchTopSongs = function(artistId){
+var fetchTopSongs = function(artist){
   return function(dispatch){
-    var url = "https://api.spotify.com/v1/artists/"+artistId+"/top-tracks"
+    var url = "https://api.spotify.com/v1/artists/"+artist.id+"/top-tracks?country=US"
     fetch(url)
     //check status
     .then(function(response){
@@ -147,8 +147,8 @@ var fetchTopSongs = function(artistId){
     })
     //handle success
     .then(function(data){
-      var songList = new SongList(artistId, data); 
-      return dispatch(fetchTopSongsSuccess(songList));
+      artist.songList = data;
+      return dispatch(fetchTopSongsSuccess(artist));
     })
     .catch(function(error){
       console.error(error);
@@ -167,3 +167,7 @@ exports.FETCH_RECOMMENDATIONS_SUCCESS = FETCH_RECOMMENDATIONS_SUCCESS;
 exports.fetchRecommendationsSuccess = fetchRecommendationsSuccess;
 exports.FETCH_RECOMMENDATIONS_ERROR = FETCH_RECOMMENDATIONS_ERROR;
 exports.fetchRecommendationsError = fetchRecommendationsError;
+
+
+exports.FETCH_TOP_SONGS_SUCCESS = FETCH_TOP_SONGS_SUCCESS;
+exports.fetchTopSongsSuccess = fetchTopSongsSuccess;

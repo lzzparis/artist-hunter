@@ -21,10 +21,11 @@ var appReducer = function(state, action){
                           {topResultClass: "showTopResult"});
   }
   else if(action.type === actions.FETCH_RECOMMENDATIONS_SUCCESS){
-    return Object.assign({}, state, {recommendations: action.recommendations});
+    // return Object.assign({}, state, {recommendations: action.recommendations});
   }
   else if (action.type === actions.FETCH_TOP_SONGS_SUCCESS){
-    console.log(action);
+    var newRecommenations = state.recommendations.concat(action.recommendation);
+    return Object.assign({}, state, {recommendations: newRecommenations});
   }
   return state;
 }
