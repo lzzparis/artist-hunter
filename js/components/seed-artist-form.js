@@ -1,5 +1,8 @@
 var React = require("react");
 var connect = require("react-redux").connect;
+var router = require('react-router');
+var Router = router.Router;
+var hashHistory = router.hashHistory;
 
 var actions = require("../actions/actions");
 
@@ -9,6 +12,7 @@ var SeedArtistForm = React.createClass({
     var artistName = this.refs.textIn.value;
     console.log(artistName);
     this.props.dispatch(actions.fetchArtistId(artistName));
+    hashHistory.push("/search");
   },
   render: function(){
     return(
