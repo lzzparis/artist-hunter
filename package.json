@@ -4,7 +4,7 @@
   "description": "Interactive Spotify queue builder",
   "main": "js/index.js",
   "scripts": {
-    "start": "http-server build",
+    "start": "npm run build && http-server build",
     "dev": "run-p watch serve",
     "test": "mocha --recursive --compilers js:babel-core/register",
     "build": "run-s build:*",
