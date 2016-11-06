@@ -1,17 +1,24 @@
 var React = require("react");
 var ReactDOM = require("react-dom");
 
-var SeedArtistFormContainer = require("./seed-artist-form");
-var RecommendationListContainer = require("./recommendation-list");
+var router = require('react-router');
+var Router = router.Router;
+var Route = router.Route;
+var hashHistory = router.hashHistory;
+var IndexRoute = router.IndexRoute;
+var Link = router.Link;
 
-var App = function(){
+var SeedArtistFormContainer = require("./seed-artist-form-container");
+
+var App = function(props){
   return (
     <div>
       <h1>Artist Hunter</h1>    
       <SeedArtistFormContainer />
-      <RecommendationListContainer />
+      {props.children}
     </div>
   );
 };
+
 
 module.exports = App;

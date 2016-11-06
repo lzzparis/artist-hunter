@@ -1,5 +1,8 @@
 var React = require("react");
 var connect = require("react-redux").connect;
+var router = require('react-router');
+var Router = router.Router;
+var hashHistory = router.hashHistory;
 
 var actions = require("../actions/actions");
 
@@ -7,8 +10,8 @@ var SeedArtistForm = React.createClass({
   formSubmit: function(event){
     event.preventDefault();
     var artistName = this.refs.textIn.value;
-    console.log(artistName);
     this.props.dispatch(actions.fetchArtistId(artistName));
+    hashHistory.push("/search");
   },
   render: function(){
     return(
@@ -18,22 +21,10 @@ var SeedArtistForm = React.createClass({
           <input className="artistInputText" type="text" ref="textIn" />
           <input className="artistInputSubmit" type="submit" onClick={this.formSubmit} />
         </form>
-        <p className={this.props.topResultClass}>
-          Top result: {this.props.seedArtistName}
-        </p>
       </div>
     );
   }
 });
 
-var mapStateToProps = function(state, props){
-  return{
-    topResultClass: state.topResultClass,
-    seedArtistName: state.seedArtistName
-  }
-}
 
-var SeedArtistFormContainer = connect(mapStateToProps)(SeedArtistForm);
-
-
-module.exports = SeedArtistFormContainer;
+module.exports = SeedArtistForm;
