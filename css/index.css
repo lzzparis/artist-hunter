@@ -1,30 +1,35 @@
-html, body{
-  box-sizing:border-box;
-  font-family:sans-serif;
-  background-color: #222;
-  color:#eee;
+html, body {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  background-color: #191414;
+  color: #eee;
   text-align: center;
   font-family: Montserrat, sans-serif;
 }
 
-*, *:before, *:after{
-  box-sizing:inherit;
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
-h1{
+h1 {
   margin: 1rem;
   font-size: 3rem;
   font-weight: bold;
 }
 
-h2{
+h2 {
   margin: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 h4 {
   margin-bottom: 0.5rem;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+}
+
+p {
+  font-style: italic; 
+  font-size:0.75rem;
 }
 
 input:focus {
@@ -36,53 +41,53 @@ input:focus {
   margin-right: 0;
   padding: 0.75rem 1.25rem;
   padding-left: 1.25rem;
-  width:30%;
+  width: 30%;
   font-size: 1.5rem;
   font-family: Montserrat, sans-serif;
   background-color: #555;
-  color:#eee;
+  color: #eee;
   border: 0px;
   border-radius: 50px 0 0 50px;
 }
 
 .artistInputText:hover {
-  cursor:text;
+  cursor: text;
 }
 
-.artistInputSubmit{
+.artistInputSubmit {
   margin: 0.5rem;
   margin-left: 0;
   padding: 0.75rem;
-  padding-right:1.25rem;
+  padding-right: 1.25rem;
   font-size: 1.5rem;
   font-family: Montserrat, sans-serif;
-  background-color: #119944;
-  color: #111;
+  background-color: #1DB954;
+  color: #191414;
   border: 0px;
   border-radius: 0 50px 50px 0;
 }
 
-.artistInputSubmit:hover{
-  cursor:pointer;
+.artistInputSubmit:hover {
+  cursor: pointer;
 }
 
-.recommendation-list{
+.recommendation-list {
   margin: 0 auto;
   width: 90%;
 }
 
-.recommendation{
-  margin:0 auto;
+.recommendation {
+  margin: 1% auto;
   padding: 2%;
   width: 25%;
-  float:left;
+  float: left;
 }
 
 .recommendation--image {
-  width:100%;
+  width: 100%;
 }
 
-.recommendation--playlist{
-  width:100%;
-  height:400px;
+.recommendation--playlist {
+  width: 100%;
+  height: 400px;
 }
