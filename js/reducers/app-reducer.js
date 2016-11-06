@@ -6,10 +6,14 @@ var initialState = {
   seedArtistName: null,
   seedArtistId: null,
   numRecommendations:4,
-  recommendations: []
+  recommendations: [ ]
 };
 
-
+var Artist = function(artistInput){
+  this.name = artistInput.name;
+  this.id = artistInput.id;
+  this.images = artistInput.images;
+}
 
 var appReducer = function(state, action){
   state = state || initialState;

@@ -109,7 +109,7 @@ describe("Recommendation", function(){
 
     var widget = result.props.children[2];
     widget.type.should.equal("iframe");
-    var expectedUri = "https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:"
+    var expectedUri = "https://embed.spotify.com/?uri=spotify:trackset:Beach%20Bats%20Top%203:"
     var expectedTracks = [];
     for (var i = 0 ; i < RECOMMENDATIONS[0].songList.tracks.length ; i++){
         expectedTracks.push(RECOMMENDATIONS[0].songList.tracks[i].id);
