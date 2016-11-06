@@ -16,8 +16,7 @@ var Artist = function(artistInput){
 }
 
 var appReducer = function(state, action){
-  // state = state || initialState;
-  state = state || initialStateForStyling;
+  state = state || initialState;
   if(action.type === actions.FETCH_ARTIST_ID_SUCCESS){
     return Object.assign( {}, state, 
                           {seedArtistName: action.artistName}, 
