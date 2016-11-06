@@ -10,7 +10,6 @@ var SeedArtistForm = React.createClass({
   formSubmit: function(event){
     event.preventDefault();
     var artistName = this.refs.textIn.value;
-    console.log(artistName);
     this.props.dispatch(actions.fetchArtistId(artistName));
     hashHistory.push("/search");
   },
@@ -27,13 +26,5 @@ var SeedArtistForm = React.createClass({
   }
 });
 
-var mapStateToProps = function(state, props){
-  return{
-    topResultClass: state.topResultClass,
-  }
-}
 
-var SeedArtistFormContainer = connect(mapStateToProps)(SeedArtistForm);
-
-
-module.exports = SeedArtistFormContainer;
+module.exports = SeedArtistForm;
