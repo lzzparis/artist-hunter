@@ -10,6 +10,28 @@ If time permits:
 * As a user, I can log into my Spotify account.
 * As a user, I can follow a recommended artist
 
+## Technologies
+* React
+* React DOM
+* React-Redux
+* Redux
+* Redux Thunk
+* React Router
+* Isomorphic Fetch
+
+### Test
+* Mocha
+* Chai
+* Enzyme
+
+### Build
+* Babel
+* Webpack
+* chokidar
+* CPR
+* Rimraf
+* Sinon
+
 
 ## Starter repo 
 Basic directory structure and initial package.json and webpack.config.js are from the Thinkful React starter repo:
@@ -20,4 +42,5 @@ All additions/modifications after the initial commit are my own.
 
 ### Build command
 npm run dev
+
 
