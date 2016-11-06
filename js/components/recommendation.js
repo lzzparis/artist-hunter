@@ -2,7 +2,6 @@ var React = require("react");
 
 var Recommendation = function(props){
   var trackset = [];    
-  console.log(props.recommendation);
   for(var i = 0 ; i < props.recommendation.songList.tracks.length; i++){
     trackset.push(props.recommendation.songList.tracks[i].id);
   };

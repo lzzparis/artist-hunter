@@ -14,27 +14,28 @@ var Artist = function(artistInput){
   this.name = artistInput.name;
   this.id = artistInput.id;
   this.images = artistInput.images;
-  this.songList = [];
+  this.songList = artistInput.songList;
 }
 
 var RECOMMENDATIONS = [
     new Artist({name:"Beach Bats", id:"1234567890", 
         images:[{url:"http://placekitten.com/400/400"}], 
-        songsList:{tracks:['1','2','3']}
+        songList:{tracks:[{id:'1'},{id:'2'},{id:'3'}]}
     }),
     new Artist({name:"Beach Bears", id:"0987654321", 
         images:[{url:"http://placekitten.com/420/410"}], 
-        songsList:{tracks:['0','9','8']}
+        songList:{tracks:[{id:'0'},{id:'9'},{id:'8'}]}
     }),
     new Artist({name:"Beach Bills", id:"qwertyuiop", 
         images:[{url:"http://placekitten.com/430/450"}], 
-        songsList:{tracks:['q','w','e']}
+        songList:{tracks:[{id:'q'},{id:'w'},{id:'e'}]}
     }),
     new Artist({name:"Beach 'Borgs", id:"poiuytrewq", 
         images:[{url:"http://placekitten.com/440/440"}], 
-        songsList:{tracks:['p','o','i']}
+        songList:{tracks:[{id:'p'},{id:'o'},{id:'i'}]}
     })
 ]
+
 
 describe("App", function(){
   it("Displays header and form", function(){
@@ -109,7 +110,11 @@ describe("Recommendation", function(){
     var widget = result.props.children[2];
     widget.type.should.equal("iframe");
     var expectedUri = "https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:"
-    expectedUri += RECOMMENDATIONS[0].songsList.tracks.join(",");
+    var expectedTracks = [];
+    for (var i = 0 ; i < RECOMMENDATIONS[0].songList.tracks.length ; i++){
+        expectedTracks.push(RECOMMENDATIONS[0].songList.tracks[i].id);
+    }
+    expectedUri += expectedTracks.join(",");
 
     widget.props.src.should.equal(expectedUri);
 

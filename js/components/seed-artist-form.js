@@ -10,7 +10,6 @@ var SeedArtistForm = React.createClass({
   formSubmit: function(event){
     event.preventDefault();
     var artistName = this.refs.textIn.value;
-    console.log(artistName);
     this.props.dispatch(actions.fetchArtistId(artistName));
     hashHistory.push("/search");
   },

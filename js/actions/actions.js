@@ -38,7 +38,6 @@ var fetchArtistId = function(artistName){
     })
     //handle success
     .then(function(data){
-      console.log(data);
       var topArtistName = data.artists.items[0].name;
       var topArtistId = data.artists.items[0].id;
       // return dispatch(fetchArtistIdSuccess(topArtistName, topArtistId));
@@ -84,7 +83,6 @@ var Artist = function(artistInput){
 
 var fetchRecommendations = function(quantity, artistId){
   return function(dispatch){
-    console.log(artistId);
     var url = "https://api.spotify.com/v1/artists/"+artistId+"/related-artists"; 
     fetch(url)
     //check status
@@ -110,7 +108,6 @@ var fetchRecommendations = function(quantity, artistId){
       return recommendationSubset;
     })
     .then(function(recommendationSubset){
-      console.log(recommendationSubset);
       for(var i = 0 ; i < recommendationSubset.length ; i++){
         dispatch(fetchTopSongs(recommendationSubset[i]));
       }
