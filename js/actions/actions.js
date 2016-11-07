@@ -1,8 +1,15 @@
 var React = require("react");
 
+var RESET_STATE = "RESET_STATE";
+var resetState = function(){
+  return {
+    type: RESET_STATE
+  }
+}
+
 var FETCH_ARTIST_ID_SUCCESS = "FETCH_ARTIST_ID_SUCCESS";
 var fetchArtistIdSuccess = function(artistName, artistId){
-  return{
+  return {
     type: FETCH_ARTIST_ID_SUCCESS,
     artistName: artistName,
     artistId: artistId
@@ -11,7 +18,7 @@ var fetchArtistIdSuccess = function(artistName, artistId){
 
 var FETCH_ARTIST_ID_ERROR = "FETCH_ARTIST_ID_ERROR";
 var fetchArtistIdError = function(artistName, errorMessage){
-  return{
+  return {
     type: FETCH_ARTIST_ID_ERROR,
     artistName: artistName,
     errorMessage: errorMessage
@@ -55,24 +62,6 @@ var fetchArtistId = function(artistName){
 }
 
 
-var FETCH_RECOMMENDATIONS_SUCCESS = "FETCH_RECOMMENDATIONS_SUCCESS";
-var fetchRecommendationsSuccess = function(recommendations){
-  return{
-    type: FETCH_RECOMMENDATIONS_SUCCESS,
-    recommendations: recommendations
-  }
-}
-
-var FETCH_RECOMMENDATIONS_ERROR = "FETCH_RECOMMENDATIONS_ERROR";
-var fetchRecommendationsError = function(artist, recommendations){
-  return{
-    type: FETCH_RECOMMENDATIONS_ERROR,
-    artist: artist,
-    recommendations: recommendations
-  };
-}
-
-
 var Artist = function(artistInput){
   this.name = artistInput.name;
   this.id = artistInput.id;
@@ -104,9 +93,8 @@ var fetchRecommendations = function(quantity, artistId){
         var rand = Math.floor(Math.random() * recommendationSuperset.artists.length);
         var relatedArtist = new Artist(recommendationSuperset.artists[rand]);
         recommendationSubset.push(relatedArtist);
-        recommendationSuperset.splice(rand,1);
+        recommendationSuperset.artists.splice(rand,1);
       }
-      dispatch(fetchRecommendationsSuccess(recommendationSubset));
       return recommendationSubset;
     })
     .then(function(recommendationSubset){
@@ -156,17 +144,14 @@ var fetchTopSongs = function(artist){
 };
 
 
+exports.RESET_STATE = RESET_STATE;
+exports.resetState = resetState;
+
 exports.FETCH_ARTIST_ID_SUCCESS = FETCH_ARTIST_ID_SUCCESS;
 exports.fetchArtistIdSuccess = fetchArtistIdSuccess;
 exports.FETCH_ARTIST_ID_ERROR = FETCH_ARTIST_ID_ERROR;
 exports.fetchArtistIdError = fetchArtistIdError;
 exports.fetchArtistId = fetchArtistId;
-
-exports.FETCH_RECOMMENDATIONS_SUCCESS = FETCH_RECOMMENDATIONS_SUCCESS;
-exports.fetchRecommendationsSuccess = fetchRecommendationsSuccess;
-exports.FETCH_RECOMMENDATIONS_ERROR = FETCH_RECOMMENDATIONS_ERROR;
-exports.fetchRecommendationsError = fetchRecommendationsError;
-
 
 exports.FETCH_TOP_SONGS_SUCCESS = FETCH_TOP_SONGS_SUCCESS;
 exports.fetchTopSongsSuccess = fetchTopSongsSuccess;

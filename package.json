@@ -9,7 +9,7 @@
     "test": "mocha --recursive --compilers js:babel-core/register",
     "build": "run-s build:*",
     "clean": "rimraf build",
-    "serve": "npm start",
+    "serve": "http-server build",
     "watch": "run-p watch:*",
     "mkdir": "mkdirp build",
     "clean:html": "rimraf build/index.html",

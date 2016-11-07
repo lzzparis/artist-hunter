@@ -17,14 +17,14 @@ var Artist = function(artistInput){
 
 var appReducer = function(state, action){
   state = state || initialState;
-  if(action.type === actions.FETCH_ARTIST_ID_SUCCESS){
+  if(action.type === actions.RESET_STATE){
+    return initialState;
+  }
+  else if(action.type === actions.FETCH_ARTIST_ID_SUCCESS){
     return Object.assign( {}, state, 
                           {seedArtistName: action.artistName}, 
                           {seedArtistId: action.artistId},
                           {topResultClass: "showTopResult"});
-  }
-  else if(action.type === actions.FETCH_RECOMMENDATIONS_SUCCESS){
-    // return Object.assign({}, state, {recommendations: action.recommendations});
   }
   else if (action.type === actions.FETCH_TOP_SONGS_SUCCESS){
     var newRecommenations = state.recommendations.concat(action.recommendation);

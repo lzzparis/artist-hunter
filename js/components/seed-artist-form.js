@@ -9,8 +9,9 @@ var actions = require("../actions/actions");
 var SeedArtistForm = React.createClass({
   formSubmit: function(event){
     event.preventDefault();
-    var artistName = this.refs.textIn.value;
-    this.props.dispatch(actions.fetchArtistId(artistName));
+    var artistKeywords = this.refs.textIn.value;
+    this.props.dispatch(actions.resetState());
+    this.props.dispatch(actions.fetchArtistId(artistKeywords));
     hashHistory.push("/search");
   },
   render: function(){
