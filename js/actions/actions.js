@@ -98,11 +98,13 @@ var fetchRecommendations = function(quantity, artistId){
     })
     //handle success
     .then(function(data){
+      var recommendationSuperset = data;
       var recommendationSubset = []
       for(var i = 0 ; i < 4; i++){
-        var rand = Math.floor(Math.random() * data.artists.length);
-        var relatedArtist = new Artist(data.artists[rand]);
+        var rand = Math.floor(Math.random() * recommendationSuperset.artists.length);
+        var relatedArtist = new Artist(recommendationSuperset.artists[rand]);
         recommendationSubset.push(relatedArtist);
+        recommendationSuperset.splice(rand,1);
       }
       dispatch(fetchRecommendationsSuccess(recommendationSubset));
       return recommendationSubset;
