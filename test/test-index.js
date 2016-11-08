@@ -9,6 +9,7 @@ var App = require("../js/components/app");
 var SeedArtistForm = require("../js/components/seed-artist-form");
 var RecommendationList = require("../js/components/recommendation-list");
 var Recommendation = require("../js/components/recommendation");
+var Help = require("../js/components/help");
 
 var Artist = function(artistInput){
   this.name = artistInput.name;
@@ -39,14 +40,24 @@ var RECOMMENDATIONS = [
 
 describe("App", function(){
   it("Displays header and form", function(){
+    var location = {pathname:"/"};
     var renderer = TestUtils.createRenderer();
-    renderer.render(<App />);
+    renderer.render(<App location={location}/>);
     var result = renderer.getRenderOutput();
 
-    var header = result.props.children[0];
+    var nav = result.props.children[0];
+    TestUtils.isElementOfType(nav,"Link");
+    nav.props.className.should.equal("nav");
+    nav.props.to.should.equal("/help");
+    nav.props.children.should.equal("Wait, what is this?");
+
+    var clearFix = result.props.children[1];
+    clearFix.props.className.should.equal("clear-fix");
+
+    var header = result.props.children[2];
     header.props.children.should.equal("Artist Hunter");
 
-    var form = result.props.children[1];
+    var form = result.props.children[3];
     TestUtils.isElementOfType(form, "SeedArtistFormContainer");
   })
 });
@@ -57,15 +68,15 @@ describe("Seed Artist Form", function(){
     renderer.render(<SeedArtistForm />);
     var result = renderer.getRenderOutput();
 
-    var header = result.props.children[0];
-    header.props.children.should.equal("Enter an artist");
-
-    var form = result.props.children[1];
+    var form = result.props.children;
     form.type.should.equal("form");
     var textInput = form.props.children[0];
     textInput.type.should.equal("input");
+    textInput.props.className.should.equal("artist-input-text");
+    textInput.props.placeholder.should.equal("Enter an artist");
 
     var submitInput = form.props.children[1];
+    submitInput.props.className.should.equal("artist-input-submit");
     submitInput.type.should.equal("input");
   });
 });
@@ -76,12 +87,12 @@ describe("Recommendation list", function(){
     renderer.render(<RecommendationList recommendations={RECOMMENDATIONS} seedArtistName="Beach Boys"/>);
     var result = renderer.getRenderOutput();
 
-    var resultsP = result.props.children[0];
+    var resultsP = result.props.children[1];
     resultsP.type.should.equal("p");
-    resultsP.props.children[0].should.equal("Top result: ");
+    resultsP.props.children[0].should.equal("Showing artists related to: ");
     resultsP.props.children[1].should.equal("Beach Boys");
 
-    var recommendationListUl = result.props.children[1];
+    var recommendationListUl = result.props.children[2];
     recommendationListUl.props.className.should.equal("recommendation-list");
 
     for(var i=0 ; i < recommendationListUl.props.children.length; i++){
@@ -120,3 +131,27 @@ describe("Recommendation", function(){
 
   });
 });
+
+describe("Help", function(){
+  it("Displays help", function(){
+    var renderer = TestUtils.createRenderer();
+    renderer.render(<Help />);
+
+    var container = renderer.getRenderOutput();
+    container.type.should.equal("div");
+    container.props.className.should.equal("help-modal-container");
+
+    var modal = container.props.children;
+    modal.type.should.equal("div");
+    modal.props.className.should.equal("help-modal");
+
+    var header = modal.props.children[0];
+    header.type.should.equal("h3");
+    header.props.children.should.equal("What do I do?");
+
+    var par = modal.props.children[1];
+    par.type.should.equal("p");
+    par.props.children.should.equal("Easy, just search for a musician and you'll get a random selection of related artists from Spotify, as well as a playlist of their top songs.")
+
+  });
+})

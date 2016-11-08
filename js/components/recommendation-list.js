@@ -13,7 +13,8 @@ var RecommendationList = React.createClass({
     };
     return(
       <div>
-        <p>Top result: {this.props.seedArtistName}</p>
+        {this.props.children}
+        <p>Showing artists related to: {this.props.seedArtistName}</p>
         <ul className="recommendation-list">
           {list}
         </ul>
