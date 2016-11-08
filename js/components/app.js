@@ -14,6 +14,7 @@ var App = function(props){
   return (
     <div>
       <Link className="nav" to="/help">Wait, what is this?</Link>
+      <div className="clear-fix"></div>
       <h1>Artist Hunter</h1>    
       <SeedArtistFormContainer />
       {props.children}
