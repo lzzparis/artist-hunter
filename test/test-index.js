@@ -67,15 +67,15 @@ describe("Seed Artist Form", function(){
     renderer.render(<SeedArtistForm />);
     var result = renderer.getRenderOutput();
 
-    var header = result.props.children[0];
-    header.props.children.should.equal("Enter an artist");
-
-    var form = result.props.children[1];
+    var form = result.props.children;
     form.type.should.equal("form");
     var textInput = form.props.children[0];
     textInput.type.should.equal("input");
+    textInput.props.className.should.equal("artist-input-text");
+    textInput.props.placeholder.should.equal("Enter an artist");
 
     var submitInput = form.props.children[1];
+    submitInput.props.className.should.equal("artist-input-submit");
     submitInput.type.should.equal("input");
   });
 });

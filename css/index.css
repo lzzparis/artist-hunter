@@ -78,7 +78,7 @@ input:focus {
   text-align: justify;
 }
 
-.artistInputText {
+.artist-input-text {
   margin: 0.5rem;
   margin-right: 0;
   padding: 0.75rem 1.25rem;
@@ -92,11 +92,11 @@ input:focus {
   border-radius: 50px 0 0 50px;
 }
 
-.artistInputText:hover {
+.artist-input-text:hover {
   cursor: text;
 }
 
-.artistInputSubmit {
+.artist-input-submit {
   margin: 0.5rem;
   margin-left: 0;
   padding: 0.75rem;
@@ -109,7 +109,7 @@ input:focus {
   border-radius: 0 50px 50px 0;
 }
 
-.artistInputSubmit:hover {
+.artist-input-submit:hover {
   cursor: pointer;
 }
 

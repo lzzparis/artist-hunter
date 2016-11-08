@@ -18,8 +18,8 @@ var SeedArtistForm = React.createClass({
     return(
       <div>
         <form>
-          <input className="artistInputText" type="text" ref="textIn" placeholder="Enter an artist"/>
-          <input className="artistInputSubmit" type="submit" onClick={this.formSubmit} />
+          <input className="artist-input-text" type="text" ref="textIn" placeholder="Enter an artist"/>
+          <input className="artist-input-submit" type="submit" onClick={this.formSubmit} />
         </form>
       </div>
     );
