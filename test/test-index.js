@@ -86,12 +86,12 @@ describe("Recommendation list", function(){
     renderer.render(<RecommendationList recommendations={RECOMMENDATIONS} seedArtistName="Beach Boys"/>);
     var result = renderer.getRenderOutput();
 
-    var resultsP = result.props.children[0];
+    var resultsP = result.props.children[1];
     resultsP.type.should.equal("p");
-    resultsP.props.children[0].should.equal("Top result: ");
+    resultsP.props.children[0].should.equal("Showing artists related to: ");
     resultsP.props.children[1].should.equal("Beach Boys");
 
-    var recommendationListUl = result.props.children[1];
+    var recommendationListUl = result.props.children[2];
     recommendationListUl.props.className.should.equal("recommendation-list");
 
     for(var i=0 ; i < recommendationListUl.props.children.length; i++){
