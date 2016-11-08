@@ -3,12 +3,12 @@ var router = require('react-router');
 var hashHistory = router.hashHistory;
 
 var Help = React.createClass({
-  displayHelp: function(){
-    hashHistory.push("/");
+  closeHelp: function(){
+    hashHistory.goBack();
   },
   render:function(){
     return (
-      <div className="help-modal-container" onClick={this.displayHelp}>
+      <div className="help-modal-container" onClick={this.closeHelp}>
         <div className="help-modal">
           <h3>What do I do?</h3>
           <p> Easy, just search for a musician and you'll get a random selection of related artists 
