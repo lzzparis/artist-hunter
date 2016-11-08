@@ -1,17 +1,24 @@
 var React = require("react");
+var router = require('react-router');
+var hashHistory = router.hashHistory;
 
-var Help = function(){
-  return (
-    <div className="help-modal-container">
-      <div className="help-modal">
-        <h3>What do I do?</h3>
-        <p> Easy, just search for a musician and you'll get a random selection of related artists 
-            from Spotify, as well as a playlist of their top songs.
-        </p>
+var Help = React.createClass({
+  displayHelp: function(){
+    hashHistory.push("/");
+  },
+  render:function(){
+    return (
+      <div className="help-modal-container" onClick={this.displayHelp}>
+        <div className="help-modal">
+          <h3>What do I do?</h3>
+          <p> Easy, just search for a musician and you'll get a random selection of related artists 
+              from Spotify, as well as a playlist of their top songs.
+          </p>
+        </div>
       </div>
-    </div>
-    
-  );
-}
+      
+    );
+  }
+});
 
 module.exports = Help;
