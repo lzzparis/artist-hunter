@@ -13,6 +13,7 @@ var SeedArtistFormContainer = require("./seed-artist-form-container");
 var App = function(props){
   return (
     <div>
+      <Link className="nav" to="/help">Wait, what is this?</Link>
       <h1>Artist Hunter</h1>    
       <SeedArtistFormContainer />
       {props.children}

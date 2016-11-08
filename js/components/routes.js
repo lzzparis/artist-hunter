@@ -9,12 +9,14 @@ var IndexRoute = router.IndexRoute;
 var Link = router.Link;
 
 
-var App = require("./app")
+var App = require("./app");
+var Help = require("./help");
 var RecommendationListContainer = require("./recommendation-list-container");
 
 var routes = (
   <Router history={hashHistory}>
     <Route path="/" component={App}>
+      <Route path="help" component={Help} />
       <Route path="search" component={RecommendationListContainer} />
     </Route>
   </Router>
