@@ -39,14 +39,24 @@ var RECOMMENDATIONS = [
 
 describe("App", function(){
   it("Displays header and form", function(){
+    var location = {pathname:"/"};
     var renderer = TestUtils.createRenderer();
-    renderer.render(<App />);
+    renderer.render(<App location={location}/>);
     var result = renderer.getRenderOutput();
 
-    var header = result.props.children[0];
+    var nav = result.props.children[0];
+    TestUtils.isElementOfType(nav,"Link");
+    nav.props.className.should.equal("nav");
+    nav.props.to.should.equal("/help");
+    nav.props.children.should.equal("Wait, what is this?");
+
+    var clearFix = result.props.children[1];
+    clearFix.props.className.should.equal("clear-fix");
+
+    var header = result.props.children[2];
     header.props.children.should.equal("Artist Hunter");
 
-    var form = result.props.children[1];
+    var form = result.props.children[3];
     TestUtils.isElementOfType(form, "SeedArtistFormContainer");
   })
 });
