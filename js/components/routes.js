@@ -17,7 +17,13 @@ var routes = (
   <Router history={hashHistory}>
     <Route path="/" component={App}>
       <Route path="help" component={Help} />
-      <Route path="search" component={RecommendationListContainer} />
+      <Route path="search" component={RecommendationListContainer}>
+        <Route path="help" component={Help} />
+      </Route>
+
+      <Route component={RecommendationListContainer}>
+        <Route path="help" component={Help} />
+      </Route>
     </Route>
   </Router>
 );

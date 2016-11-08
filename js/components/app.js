@@ -11,9 +11,11 @@ var Link = router.Link;
 var SeedArtistFormContainer = require("./seed-artist-form-container");
 
 var App = function(props){
+  var relativeHelpUrl = props.location.pathname+"/help";
+  relativeHelpUrl = relativeHelpUrl.replace("//","/");
   return (
     <div>
-      <Link className="nav" to="/help">Wait, what is this?</Link>
+      <Link className="nav" to={relativeHelpUrl}>Wait, what is this?</Link>
       <div className="clear-fix"></div>
       <h1>Artist Hunter</h1>    
       <SeedArtistFormContainer />
