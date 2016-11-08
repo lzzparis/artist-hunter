@@ -9,6 +9,7 @@ var App = require("../js/components/app");
 var SeedArtistForm = require("../js/components/seed-artist-form");
 var RecommendationList = require("../js/components/recommendation-list");
 var Recommendation = require("../js/components/recommendation");
+var Help = require("../js/components/help");
 
 var Artist = function(artistInput){
   this.name = artistInput.name;
@@ -130,3 +131,27 @@ describe("Recommendation", function(){
 
   });
 });
+
+describe("Help", function(){
+  it("Displays help", function(){
+    var renderer = TestUtils.createRenderer();
+    renderer.render(<Help />);
+
+    var container = renderer.getRenderOutput();
+    container.type.should.equal("div");
+    container.props.className.should.equal("help-modal-container");
+
+    var modal = container.props.children;
+    modal.type.should.equal("div");
+    modal.props.className.should.equal("help-modal");
+
+    var header = modal.props.children[0];
+    header.type.should.equal("h3");
+    header.props.children.should.equal("What do I do?");
+
+    var par = modal.props.children[1];
+    par.type.should.equal("p");
+    par.props.children.should.equal("Easy, just search for a musician and you'll get a random selection of related artists from Spotify, as well as a playlist of their top songs.")
+
+  });
+})
