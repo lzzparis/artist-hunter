@@ -53,21 +53,27 @@ input:focus {
   width: 100%;
   height: 100vh;
   background-color: rgba(25,20,20, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .help-modal {
   width: 50%;
   height: 50vh;
   margin: 25vh 25%;
-  padding: 1% 5%;
+  padding: 0 5%;
   background-color: #1DB954;
   border: 2px solid #191414;
-  border-radius: 200px;
+  border-radius: 1000px;
   color: #191414;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .help-modal h3 {
-  margin: 3rem 0;
+  margin-bottom: 3rem;
   font-size: 4rem;
   font-weight: 700;
 }
@@ -154,6 +160,28 @@ input:focus {
 
   .artist-input-text {
     width: 90%;
-
   }
+
+  .help-modal {
+    width: 80%;
+    height: 90vh;
+    margin: 5vh auto;
+    padding: 1% 5%;
+    background-color: #1DB954;
+    border: 2px solid #191414;
+    border-radius: 200px;
+    color: #191414;
+  }
+
+  .help-modal h3 {
+    font-size: 4rem;
+    font-weight: 700;
+  }
+
+  .help-modal p {
+    font-size: 1.5rem;
+    font-style: normal;
+    text-align: justify;
+  }
+
 }
