@@ -11,7 +11,7 @@ var RecommendationList = require("../js/components/recommendation-list");
 var Recommendation = require("../js/components/recommendation");
 var Help = require("../js/components/help");
 
-var Artist = function(artistInput){
+var Artist = function(artistInput) {
   this.name = artistInput.name;
   this.id = artistInput.id;
   this.images = artistInput.images;
@@ -38,8 +38,8 @@ var RECOMMENDATIONS = [
 ]
 
 
-describe("App", function(){
-  it("Displays header and form", function(){
+describe("App", function() {
+  it("Displays header and form", function() {
     var location = {pathname:"/"};
     var renderer = TestUtils.createRenderer();
     renderer.render(<App location={location}/>);
@@ -62,8 +62,8 @@ describe("App", function(){
   })
 });
 
-describe("Seed Artist Form", function(){
-  it("Displays header, form, and result p", function(){
+describe("Seed Artist Form", function() {
+  it("Displays header, form, and result p", function() {
     var renderer = TestUtils.createRenderer();
     renderer.render(<SeedArtistForm />);
     var result = renderer.getRenderOutput();
@@ -81,8 +81,8 @@ describe("Seed Artist Form", function(){
   });
 });
 
-describe("Recommendation list", function(){
-  it("Displays recommendation list", function(){
+describe("Recommendation list", function() {
+  it("Displays recommendation list", function() {
     var renderer = TestUtils.createRenderer();
     renderer.render(<RecommendationList recommendations={RECOMMENDATIONS} seedArtistName="Beach Boys"/>);
     var result = renderer.getRenderOutput();
@@ -95,15 +95,15 @@ describe("Recommendation list", function(){
     var recommendationListUl = result.props.children[2];
     recommendationListUl.props.className.should.equal("recommendation-list");
 
-    for(var i=0 ; i < recommendationListUl.props.children.length; i++){
+    for(var i=0 ; i < recommendationListUl.props.children.length; i++) {
       var recommendationLi = recommendationListUl.props.children[i];
       recommendationLi.props.recommendation.should.equal(RECOMMENDATIONS[i]);
     }
   });
 });
 
-describe("Recommendation", function(){
-  it("Displays recommendation", function(){
+describe("Recommendation", function() {
+  it("Displays recommendation", function() {
     var renderer = TestUtils.createRenderer();
     renderer.render(<Recommendation recommendation={RECOMMENDATIONS[0]} />);
     var result = renderer.getRenderOutput();
@@ -122,7 +122,7 @@ describe("Recommendation", function(){
     widget.type.should.equal("iframe");
     var expectedUri = "https://embed.spotify.com/?uri=spotify:trackset:Beach%20Bats%20Top%203:"
     var expectedTracks = [];
-    for (var i = 0 ; i < RECOMMENDATIONS[0].songList.tracks.length ; i++){
+    for (var i = 0 ; i < RECOMMENDATIONS[0].songList.tracks.length ; i++) {
         expectedTracks.push(RECOMMENDATIONS[0].songList.tracks[i].id);
     }
     expectedUri += expectedTracks.join(",");
@@ -132,8 +132,8 @@ describe("Recommendation", function(){
   });
 });
 
-describe("Help", function(){
-  it("Displays help", function(){
+describe("Help", function() {
+  it("Displays help", function() {
     var renderer = TestUtils.createRenderer();
     renderer.render(<Help />);
 

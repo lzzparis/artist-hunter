@@ -3,7 +3,7 @@ var connect = require("react-redux").connect;
 
 var RecommendationList = require("./recommendation-list"); 
 
-var mapStateToProps = function(state, props){
+var mapStateToProps = function(state, props) {
   return {
     seedArtistName: state.seedArtistName,
     recommendations: state.recommendations

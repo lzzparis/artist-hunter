@@ -5,7 +5,7 @@ var Provider = require("react-redux").Provider;
 var store = require("./store"); 
 var routes = require("./components/routes");
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function() {
   ReactDOM.render(
     <Provider store={store}>
       {routes}
