@@ -1,7 +1,7 @@
 var React = require("react");
 var ReactDOM = require("react-dom");
 
-var router = require('react-router');
+var router = require("react-router");
 var Router = router.Router;
 var Route = router.Route;
 var hashHistory = router.hashHistory;
@@ -10,8 +10,8 @@ var Link = router.Link;
 
 var SeedArtistFormContainer = require("./seed-artist-form-container");
 
-var App = function(props){
-  var relativeHelpUrl = props.location.pathname+"/help";
+var App = function(props) {
+  var relativeHelpUrl = props.location.pathname + "/help";
   relativeHelpUrl = relativeHelpUrl.replace("//","/");
   return (
     <div>

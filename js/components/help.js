@@ -1,12 +1,12 @@
 var React = require("react");
-var router = require('react-router');
+var router = require("react-router");
 var hashHistory = router.hashHistory;
 
 var Help = React.createClass({
-  closeHelp: function(){
+  closeHelp:  function() {
     hashHistory.goBack();
   },
-  render:function(){
+  render: function() {
     return (
       <div className="help-modal-container" onClick={this.closeHelp}>
         <div className="help-modal">
