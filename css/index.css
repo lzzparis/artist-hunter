@@ -141,6 +141,11 @@ input:focus {
   float: left;
 }
 
+.recommendation--no-results {
+  margin: 2rem;
+  font-size: 2rem;
+}
+
 .recommendation--image {
   width: 100%;
 }

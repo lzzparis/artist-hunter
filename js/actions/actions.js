@@ -56,7 +56,7 @@ var fetchArtistId = function(artistName) {
     })
     //handle error
     .catch(function(error) {
-      console.error(error);
+      return dispatch(fetchArtistIdError(artistName, error));
     });
   }
 }
