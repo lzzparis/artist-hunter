@@ -93,6 +93,9 @@ input:focus {
 
 }
 
+.seed-artist-form {
+  margin-top: 3rem;
+}
 
 .artist-input-text {
   margin: 0.5rem;

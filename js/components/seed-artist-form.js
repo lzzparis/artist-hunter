@@ -16,7 +16,8 @@ var SeedArtistForm = React.createClass({
   },
   render: function() {
     return(
-      <div>
+      <div className="seed-artist-form">
+        <h1>Artist Hunter</h1>    
         <form>
           <input className="artist-input-text" type="text" ref="textIn" placeholder="Enter an artist"/>
           <input className="artist-input-submit" type="submit" onClick={this.formSubmit} />
