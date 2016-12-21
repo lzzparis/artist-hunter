@@ -6,7 +6,7 @@ var initialState = {
   seedArtistName: null,
   seedArtistId: null,
   numRecommendations:4,
-  recommendations: [ ]
+  recommendations: []
 };
 
 var Artist = function(artistInput) {
@@ -25,6 +25,12 @@ var appReducer = function(state, action) {
                           {seedArtistName: action.artistName}, 
                           {seedArtistId: action.artistId},
                           {topResultClass: "showTopResult"});
+  }
+  else if (action.type === actions.FETCH_ARTIST_ID_ERROR) {
+    return Object.assign( {}, state,
+                          {seedArtistName: action.artistName},
+                          {seedArtistId: null},
+                          {recommendations: []});
   }
   else if (action.type === actions.FETCH_TOP_SONGS_SUCCESS) {
     var newRecommenations = state.recommendations.concat(action.recommendation);

@@ -17,7 +17,6 @@ var App = function(props) {
     <div>
       <Link className="nav" to={relativeHelpUrl}>Wait, what is this?</Link>
       <div className="clear-fix"></div>
-      <h1>Artist Hunter</h1>    
       <SeedArtistFormContainer />
       {props.children}
     </div>

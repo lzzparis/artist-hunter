@@ -60,9 +60,8 @@ input:focus {
 
 .help-modal {
   width: 50%;
-  height: 50vh;
-  margin: 25vh 25%;
-  padding: 0 5%;
+  margin: auto;
+  padding: 8%;
   background-color: #1DB954;
   border: 2px solid #191414;
   border-radius: 1000px;
@@ -82,6 +81,20 @@ input:focus {
   font-size: 2rem;
   font-style: normal;
   text-align: justify;
+}
+
+.help-modal p a {
+  color: #191414;
+  font-weight: bold;
+  text-decoration: none;
+}
+.help-modal p a:hover {
+  text-decoration: underline;
+
+}
+
+.seed-artist-form {
+  margin-top: 3rem;
 }
 
 .artist-input-text {
@@ -131,6 +144,11 @@ input:focus {
   float: left;
 }
 
+.recommendation--no-results {
+  margin: 2rem;
+  font-size: 2rem;
+}
+
 .recommendation--image {
   width: 100%;
 }
@@ -140,17 +158,13 @@ input:focus {
   height: 400px;
 }
 
-@media (max-width: 770px) {
-  .recommendation {
-    width: 50%;
+@media (max-width: 820px) {
+  .help-modal p {
+    font-size: 1.5rem;
   }
 }
 
-@media (max-width: 500px) {
-  .recommendation {
-    width: 100%;
-  }
-
+@media (max-width: 770px) {
   .artist-input-text, .artist-input-submit {
     margin: 0.5rem auto;
     display: block;
@@ -161,6 +175,17 @@ input:focus {
   .artist-input-text {
     width: 90%;
   }
+  .recommendation {
+    width: 50%;
+  }
+}
+
+@media (max-width: 600px) {
+  .recommendation {
+    width: 100%;
+  }
+
+
 
   .help-modal {
     width: 80%;
@@ -178,10 +203,6 @@ input:focus {
     font-weight: 700;
   }
 
-  .help-modal p {
-    font-size: 1.5rem;
-    font-style: normal;
-    text-align: justify;
-  }
+
 
 }
