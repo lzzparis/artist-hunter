@@ -6,6 +6,7 @@ var RecommendationList = require("./recommendation-list");
 var mapStateToProps = function(state, props) {
   return {
     seedArtistName: state.seedArtistName,
+    seedArtistId: state.seedArtistId,
     recommendations: state.recommendations
   };
 };
